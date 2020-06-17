@@ -11,5 +11,5 @@ This project uses text analysis and visualization to analyze the statements issu
 *Contributors:* Dr. Jasmine Jones, Dr. Jaye Nias, Imani Sherman, Tawanda Kumbula, and Anisa Thomas
 
 
-[Word cloud of common words from statements against racism](images/BLM-statements-allprof-v1.png)
+![Word cloud of common words from statements against racism](images/BLM-statements-allprof-v1.png)
 
