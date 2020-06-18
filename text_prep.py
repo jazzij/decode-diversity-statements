@@ -27,6 +27,8 @@ for row in statements.values:
 	
 	#create new filename. make sure good punctuation	
 	name = name.replace('/', '_')
+	name = name.replace('*', '')
+	name = name.replace(',', '')
 	txtfilename = name + ".txt"		
 	path_to_file =os.path.join(textdir, txtfilename)
 	
