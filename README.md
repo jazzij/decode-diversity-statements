@@ -13,3 +13,10 @@ This project uses text analysis and visualization to analyze the statements issu
 
 ![Word cloud of common words from statements against racism](images/BLM-statements-allprof-v1.png)
 
+
+<figure>
+  <img src="{{site.url}}/images/co-occurance_stop_removed.png" alt="Network graph of common words"/>
+  <figcaption>Starting to explore themes through co-occuring words (@jclarknias).</figcaption>
+</figure>
+
+#![Network graph of common words](images/co-occurance_stop_removed.png)
