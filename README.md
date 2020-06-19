@@ -19,4 +19,3 @@ This project uses text analysis and visualization to analyze the statements issu
   <figcaption>Starting to explore themes through co-occuring words (@jclarknias).</figcaption>
 </figure>
 
-#![Network graph of common words](images/co-occurance_stop_removed.png)
