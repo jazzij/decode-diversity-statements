@@ -12,7 +12,6 @@ This project uses text analysis and visualization to analyze the statements issu
 
 ## Our Work in Progress
 
-![Word cloud of common words from statements against racism](images/BLM-statements-allprof-v1.png)
 
 <figure>
   <figcaption><i>A thousand words: what do statements against racism really say?</i></figcaption>
