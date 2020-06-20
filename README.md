@@ -10,12 +10,22 @@ This project uses text analysis and visualization to analyze the statements issu
 
 *Contributors:* Dr. Jasmine Jones, Dr. Jaye Nias, Imani Sherman, Tawanda Kumbula, and Anisa Thomas
 
+## Our Work in Progress
 
 ![Word cloud of common words from statements against racism](images/BLM-statements-allprof-v1.png)
 
+<figure>
+  <figcaption><i>A thousand words: what do statements against racism really say?</i></figcaption>
+  <img src="images/BLM-statements-allprof-v1.png" alt="Word cloud of common words from statements against racism"/>
+</figure>
+
 
 <figure>
-  <img src="{{site.url}}/images/co-occurance_stop_removed.png" alt="Network graph of common words"/>
-  <figcaption>Starting to explore themes through co-occuring words (@jclarknias).</figcaption>
+ <figcaption><i>Starting to explore themes through co-occuring words (@jclarknias).</i></figcaption>
+ <img src="images/co-occurance_stop_removed.png" alt="Network graph of common words"/>
 </figure>
+
+
+
+
 
