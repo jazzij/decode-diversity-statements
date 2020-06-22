@@ -20,7 +20,7 @@ def findHashtag( filename):
 	hashtags = re.findall(r"(#\w+)", text)
 	print("Found the following: ".format(hashtags))
 	return hashtags
-# done
+
 def findURL( filename):
 
 	with open(filename, "r") as file:
