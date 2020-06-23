@@ -16,8 +16,8 @@ if not os.path.isdir(textdir):
 	os.mkdir(textdir)
 
 #Get appropriate sheet from xcel file
-wb = load_workbook("Sci_Tech_BLM_List_wText.xlsx")
-statements = wb['Sheet6']
+wb = load_workbook("Sci_Tech_BLM_List_wText_6-23.xlsx")
+statements = wb['Text-Only']
 
 # Save contexts of text into separate txt files
 for row in statements.values:
@@ -29,6 +29,7 @@ for row in statements.values:
 	name = name.replace('/', '_')
 	name = name.replace('*', '')
 	name = name.replace(',', '')
+	name = name.replace('. ', '_')
 	txtfilename = name + ".txt"		
 	path_to_file =os.path.join(textdir, txtfilename)
 	
