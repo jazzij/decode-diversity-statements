@@ -19,7 +19,7 @@ def remove_puctuation(filename):
 
 def lower_case(filename):
     """
-    This function is for removing the puctuations from the text.
+    This function is for changing the text to lower caps
     Filename: Name of the file
     return: words (in lower caps)
     """
@@ -80,5 +80,3 @@ def _stemming(filename):
         stemmed_words.append(ps.stem(w)) # Adds words to the list
     print(stemmed_words)
     return stemmed_words
-    # for w in words:
-    #     print(ps.stem(w))
