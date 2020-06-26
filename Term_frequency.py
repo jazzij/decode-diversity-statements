@@ -1,18 +1,28 @@
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-
+from nltk.stem import PorterStemmer
 
 def remove_puctuation(filename):
+    """
+    This function removes the punctuations from the text.
+    Filename: Name of the file
+    return: new_text
+    """
     with open(filename.text, "r") as file:
         text = file.read()
 
     tokenizer = nltk.RegexpTokenizer(r"\w+")  # Removes all punctuation marks in the text
-    new_words = tokenizer.tokenize(text)      # Returns a text as a list of words with punctuations removed.
-    #print (new_words)
-    return new_words
+    new_text = tokenizer.tokenize(text)      # Returns a text as a list of words with punctuations removed.
+    #print (new_text)
+    return new_text
 
 def lower_case(filename):
+    """
+    This function is for removing the puctuations from the text.
+    Filename: Name of the file
+    return: words (in lower caps)
+    """
     with open(filename.text, "r") as file:
         text = file.read()
 
@@ -23,6 +33,11 @@ def lower_case(filename):
     return words
 
 def stop_words(filename):
+    """
+    This function is for removing the stopwords from the text file.
+    Filename: Name of the file
+    return: filtered_words
+    """
     with open(filename.text, "r") as file:
         text = file.read()
 
@@ -37,5 +52,33 @@ def stop_words(filename):
         if w not in stop_words:
             filtered_words.append(w)    # Add all words after stopwords have been removed
     print ("Filtered_words:",filtered_words )
+
     return filtered_words
 
+def tf(filename):
+    """
+    This function is supposed to calculate the term frequency of the text in file.
+    Filename: Name of the file
+    return: tf
+    """
+
+
+def _stemming(filename):
+    """
+    This function reduces the word to its stem; stemming.
+    Filename: Name of the file
+    return: stemmed_words
+    """
+
+    with open(filename.text, "r") as file:
+        text = file.read()
+
+    ps = PorterStemmer()
+    words = word_tokenize(text)
+    stemmed_words = []
+    for w in words:
+        stemmed_words.append(ps.stem(w)) # Adds words to the list
+    print(stemmed_words)
+    return stemmed_words
+    # for w in words:
+    #     print(ps.stem(w))
