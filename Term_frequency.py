@@ -55,13 +55,30 @@ def stop_words(filename):
 
     return filtered_words
 
-def tf(filename):
+def termfrequency(filename):
     """
     This function is supposed to calculate the term frequency of the text in file.
     Filename: Name of the file
-    return: tf
+    return: term frequency
     """
+    with open(filename.text, "r") as file:
+        text = file.read()
+        myList = []
+        normalizeTermFreq = text.split()  # Removes the white space between the words
+        allWords = (normalizeTermFreq)
 
+        uniqueWords = set(allWords)  # Searches and store each unrepeated word in text
+
+        for i in uniqueWords:
+            count = 0
+            for j in allWords:
+               if i == j:      # Compares each with word with every word in the text
+                    count += 1
+            myList.append([i, count / len(allWords)]) # Add every word to the list and calculate the term frequency
+
+        for i in myList:
+            #print (i)
+            return i
 
 def _stemming(filename):
     """
