@@ -33,10 +33,6 @@ def new_tokenized_texts(filename):
   prefix = "tokens_"  # add this to beginning of filename to avoid duplicating originals
   newtextdir = os.path.join(os.getcwd(), "tokenText")  # instead of ~/texts
 
-  '''
-  using the names of the existing files from textDir, create each files in a new directory (newtextdir)
-  and save the tokens from the original file into the new file. should look like     "~newtextdir/tokens_NAMEOFORG.txt"
-  '''
   for filename in os.listdir(textdir):
     # ...here: open text file, do the tokenize stuff, get the tokens, and THEN create a new file
     newfilePath = os.path.join(textdir, filename)
@@ -97,7 +93,15 @@ def main():
   """
 
   """
+  print(os.getcwd())  # check which directory python file is in
+  textdir = os.path.join(os.getcwd(),
+                         "texts")  # assuming texts is a directory located in the same place as your python file
+  print(os.path.isdir(textdir))  # check if valid
 
+  for filename in os.listdir(textdir):
+    filepath = os.path.join(textdir, filename)  # create the full filepath using the directory and filename
+    with open(filepath, "r") as file:
+      text = file.read()
 
 if __name__ == "__main__":
     main()
