@@ -22,7 +22,8 @@ def all_texts(filename):
     filepath = os.path.join(textdir, filename) #create the full filepath using the directory and filename
     with open(filepath, "r") as file:
       text = file.read()
-  return filename
+
+    return filename
 
 def new_tokenized_texts(filename):
   """
@@ -34,51 +35,34 @@ def new_tokenized_texts(filename):
   newtextdir = os.path.join(os.getcwd(), "tokenText")  # instead of ~/texts
 
   for filename in os.listdir(textdir):
-    # ...here: open text file, do the tokenize stuff, get the tokens, and THEN create a new file
     newfilePath = os.path.join(textdir, filename)
     with open(newfilePath,"r") as file:
       texts = file.read()
 
+      stop_words = set(stopwords.words('english'))  # Creating a List of stopwords
       tokens = nltk.word_tokenize(texts)  # Breaks text paragraph into word
-
       tokens  = [word.lower() for word in tokens if word.isalpha()]  # Changes all the words into lower case
+
+      filtered_words = [w for w in tokens if not w in stop_words]  # Filter out a list of tokens from the text.
+      filtered_ = []
+
+      for w in tokens:
+        if w not in stop_words:
+          filtered_.append(w)  # Add all words after stopwords have been removed
+
       newfileName = prefix + filename
       newfilePath = os.path.join(newtextdir, newfileName)
       with open(newfileName, 'w') as newfile:
-        newfile.write(", ".join(tokens))  # this will write to file the list of tokens as comma separated string
+        newfile.write(", ".join(filtered_))  # this will write to file the list of filtered tokens as comma separated string
+      return newfile
 
-      return  newfile
-
-def stop_words(filename):
-  """
-  This function is for removing the stopwords from the text file.
-  Filename: Name of the file
-  return: filtered_words
-  """
-  with open(filename, "r") as file:
-    text = file.read()
-
-  stop_words = set(stopwords.words('english'))  # Creating a List of stopwords
-
-  word_tokens = word_tokenize(text)  # Split sentences in the text into words
-
-  filtered_words = [w for w in word_tokens if not w in stop_words]  # Filter out a list of tokens from the text.
-  filtered_words = []
-
-  for w in word_tokens:
-    if w not in stop_words:
-      filtered_words.append(w)  # Add all words after stopwords have been removed
-  print("Filtered_words:", filtered_words)
-
-  return filtered_words
-
-def lemmatization(filename):
+def lemmatization(newfile):
   """
   This function is meant to reduce the word to its root synonym.
-  Filename: Name of the file
+  newfile: Name of the file
   return: lemmatized_words
   """
-  with open(filename, "r") as file:
+  with open(newfile, "r") as file:
     text = file.read()
 
   wn = nltk.WordNetLemmatizer()
@@ -89,21 +73,6 @@ def lemmatization(filename):
 
   return lemmatized_words
 
-def main():
-  """
 
-  """
-  print(os.getcwd())  # check which directory python file is in
-  textdir = os.path.join(os.getcwd(),
-                         "texts")  # assuming texts is a directory located in the same place as your python file
-  print(os.path.isdir(textdir))  # check if valid
-
-  for filename in os.listdir(textdir):
-    filepath = os.path.join(textdir, filename)  # create the full filepath using the directory and filename
-    with open(filepath, "r") as file:
-      text = file.read()
-
-if __name__ == "__main__":
-    main()
 
 
