@@ -115,3 +115,6 @@ def lemmatization(filename):
         lemmatized_words.append(wn.lemmatize(line))  # Adds words to the list
 
     return lemmatized_words
+
+
+
