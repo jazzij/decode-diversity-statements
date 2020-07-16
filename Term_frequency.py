@@ -3,6 +3,8 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
+from nltk import FreqDist
+import matplotlib.pyplot as plt
 
 def remove_puctuation(filename):
     """
@@ -76,10 +78,10 @@ def termfrequency(filename):
                if i == j:      # Compares each with word with every word in the text
                     count += 1
             myList.append([i, count / len(allWords)]) # Add every word to the list and calculate the term frequency
+        tf_grph = dict(myList)
+        term_frequency_graph = plot_tf(tf_grph)
+        return myList
 
-        for i in myList:
-            #print (i)
-            return i
 
 def _stemming(filename):
     """
@@ -116,5 +118,41 @@ def lemmatization(filename):
 
     return lemmatized_words
 
+def modified_files(filename):
+    """
+    This function is supposed to stem the words that end with -ing and lemmatize the rest. It is also supposed to remove duplicates of words.
+    filename: Name of text files
+    return: duplicates free
+    """
+    modified_words = []
+    duplicates_free = []
+    with open(filename.txt, 'r') as file:
+        words = file.read()
+        new_words = word_tokenize(words)
 
+    wn = nltk.WordNetLemmatizer()
+    ps = PorterStemmer()
 
+    for w in new_words:
+        if w[-3:] == "ing": #Checks for the words that end with -ing and they going through stemming
+            modified_words.append(ps.stem(w))
+        else:
+            modified_words.append(wn.lemmatize(w))
+
+        uniqueWords = set(modified_words[:]) #This removes the duplicates of words after stemming and lemmatization
+        for i in uniqueWords:
+            duplicates_free.append(i)
+    return duplicates_free
+
+def plot_tf(filename):
+    """
+    This function is for plotting the term frequency of each file or allthewords list on a graph.
+
+    """
+    with open(filename.txt, 'r') as file:
+        words = file.read()
+        new_words = word_tokenize(words)
+        tf_grph = dict(new_words)  #Changes the files into a dictionary
+
+        fd = nltk.FreqDist(tf_grph)
+        fd.plot(40, cumulative=False)  #Plots forty terms with highest term frequency.
