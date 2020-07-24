@@ -26,7 +26,7 @@ This project uses text analysis and visualization to analyze the statements issu
 
 <figure>
  <figcaption><i>Looking for words that are unique or specific to the protests against police brutality (@kumbula).</i></figcaption>
- <img src="images/wordList.png" alt="Word cloud"/>
+ <img src="images/wordList.JPG" alt="Word cloud"/>
 </figure>
 
 
