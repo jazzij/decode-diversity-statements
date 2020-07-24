@@ -3,7 +3,7 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/New_texts.py" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/common_ngrams.txt" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common_ngrams.txt" charset="windows-1252" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
