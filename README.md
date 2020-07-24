@@ -24,7 +24,10 @@ This project uses text analysis and visualization to analyze the statements issu
  <img src="images/co-occurance_stop_removed.png" alt="Network graph of common words"/>
 </figure>
 
-
+<figure>
+ <figcaption><i>Looking for words that are unique or specific to the protests against police brutality (@kumbula).</i></figcaption>
+ <img src="images/wordList.png" alt="Word cloud"/>
+</figure>
 
 
 
