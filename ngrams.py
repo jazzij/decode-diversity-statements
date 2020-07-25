@@ -12,11 +12,14 @@ newtextdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements")
 newfilePath = os.path.join(newtextdir, "common_ngrams.txt")
 
 text = []
-new_trigrams = []
 tokens = []
 ngram_counts ={}
 newWordsList = []
+
 def all_corpus_ngrams():
+    """
+    This function is creating the trigrams from the corpus and find the most common 150 trigrams.
+    """
     for filename in os.listdir(textdir):
         filepath = os.path.join(textdir, filename)
         with open(filepath, "r") as file:
@@ -30,12 +33,14 @@ def all_corpus_ngrams():
             trigrams = Counter(ngrams(tokens, 3))  # return a dictionary, key is tuple, value is count
             ngram_counts.update(trigrams)
             all_texts = significant_ngrams(trigrams)
+            most_common_tri = common_ngrams(trigrams)
+def common_ngrams(trigrams):
 
-            for i in trigrams:
-                newWordsList.append(i)
+    for i in trigrams:
+        newWordsList.append(i)
 
-            grams = Counter(ngrams(newWordsList, 3))
-            common_counts = grams.most_common(150)
+    grams = Counter(ngrams(newWordsList, 3))
+    common_counts = grams.most_common(150)
     return common_counts
 
 def significant_ngrams(trigrams):
@@ -48,16 +53,12 @@ def significant_ngrams(trigrams):
 
 
     ngram_keys = trigrams.keys()  # keys of the dictionary are the ngrams
-    # print(ngram_keys)
-
 
     for unique_word in token:
         # find word in ngram
-        # print("***Searching for ", unique_word)
         for ngram in ngram_keys:
             if unique_word in ngram:
                 significant = (ngram, ngram_counts[ngram])
-
 
                 file = open("common_ngrams.txt", 'a+')
                 file.write(str(significant))
