@@ -9,7 +9,7 @@ tokenizer = nltk.RegexpTokenizer(r"\w+")  # regex to get all words, including nu
 curdir = os.getcwd()
 textdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements\texts")
 newtextdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements")
-newfilePath = os.path.join(newtextdir, "common_ngrams.txt")
+newfilePath = os.path.join(newtextdir, "Significant wordlist_ngrams.txt")
 
 text = []
 tokens = []
@@ -58,7 +58,7 @@ def significant_ngrams(trigrams):
             if unique_word in ngram:
                 significant = (ngram, ngram_counts[ngram])
 
-                file = open("common_ngrams.txt", 'a+')
+                file = open("Significant wordlist_ngrams.txt", 'a+')
                 file.write(str(significant))
 
 if __name__ == "__main__":
