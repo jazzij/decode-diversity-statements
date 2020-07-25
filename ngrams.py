@@ -33,14 +33,12 @@ def all_corpus_ngrams():
             trigrams = Counter(ngrams(tokens, 3))  # return a dictionary, key is tuple, value is count
             ngram_counts.update(trigrams)
             all_texts = significant_ngrams(trigrams)
-            most_common_tri = common_ngrams(trigrams)
-def common_ngrams(trigrams):
 
-    for i in trigrams:
-        newWordsList.append(i)
+            for i in trigrams:
+                newWordsList.append(i)
 
-    grams = Counter(ngrams(newWordsList, 3))
-    common_counts = grams.most_common(150)
+            grams = Counter(ngrams(newWordsList, 3))
+            common_counts = grams.most_common(150)
     return common_counts
 
 def significant_ngrams(trigrams):
