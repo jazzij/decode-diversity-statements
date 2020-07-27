@@ -20,7 +20,7 @@ def all_corpus_ngrams():
     """
     This function is creating the trigrams from the corpus and find the most common 150 trigrams.
     """
-    for filename in os.listdir(textdir):
+    for filename in os.listdir(textdir)[:]:
         filepath = os.path.join(textdir, filename)
         with open(filepath, "r") as file:
             text = file.read()
@@ -32,13 +32,9 @@ def all_corpus_ngrams():
 
             trigrams = Counter(ngrams(tokens, 3))  # return a dictionary, key is tuple, value is count
             ngram_counts.update(trigrams)
-            all_texts = significant_ngrams(trigrams)
-
-            for i in trigrams:
-                newWordsList.append(i)
-
-            grams = Counter(ngrams(newWordsList, 3))
-            common_counts = grams.most_common(150)
+            significant_ngrams(trigrams)
+    ngram = Counter(ngram_counts)
+    common_counts = ngram.most_common(150)
     return common_counts
 
 def significant_ngrams(trigrams):
@@ -47,20 +43,25 @@ def significant_ngrams(trigrams):
     tokenizer = nltk.RegexpTokenizer(r"\w+")
     words = open("uniquewordslist.txt", 'r')
     uniqueList = words.read()
-    token = tokenizer.tokenize(uniqueList)
-
+    tokens = tokenizer.tokenize(uniqueList)
+    words.close()
 
     ngram_keys = trigrams.keys()  # keys of the dictionary are the ngrams
 
-    for unique_word in token:
+    for unique_word in  tokens:
         # find word in ngram
         for ngram in ngram_keys:
             if unique_word in ngram:
-                significant = (ngram, ngram_counts[ngram])
+                significant = (ngram, ngram_counts[ngram])  #
 
-                file = open("Significant wordlist_ngrams.txt", 'a+')
-                file.write(str(significant))
+                file = open("Significant wordlist_ngrams.txt", "a+")
+                file.write(str(significant)+ "\n")
+                file.close()
+
 
 if __name__ == "__main__":
-    all_corpus_ngrams()
+   gram = all_corpus_ngrams()
+   print(gram)
+
+
 
