@@ -12,12 +12,12 @@ def remove_puctuation(filename):
     Filename: Name of the file
     return: new_text
     """
-    with open(filename.text, "r") as file:
+    with open(filename, "r") as file:
         text = file.read()
 
     tokenizer = nltk.RegexpTokenizer(r"\w+")  # Removes all punctuation marks in the text
     new_text = tokenizer.tokenize(text)      # Returns a text as a list of words with punctuations removed.
-    #print (new_text)
+
     return new_text
 
 def lower_case(filename):
@@ -31,8 +31,6 @@ def lower_case(filename):
 
     words = nltk.word_tokenize(text)  # Breaks text paragraph into words
     words = [word.lower() for word in words if word.isalpha()]  # Changes all the words into lower case
-    #print(words)
-
     return words
 
 def stop_words(filename):
@@ -41,7 +39,7 @@ def stop_words(filename):
     Filename: Name of the file
     return: filtered_words
     """
-    with open(filename.text, "r") as file:
+    with open(filename, "r") as file:
         text = file.read()
 
     stop_words = set(stopwords.words('english')) # Creating a List of stopwords
@@ -55,7 +53,6 @@ def stop_words(filename):
         if w not in stop_words:
             filtered_words.append(w)    # Add all words after stopwords have been removed
     print ("Filtered_words:",filtered_words )
-
     return filtered_words
 
 def termfrequency(filename):
@@ -64,7 +61,7 @@ def termfrequency(filename):
     Filename: Name of the file
     return: term frequency
     """
-    with open(filename.text, "r") as file:
+    with open(filename, "r") as file:
         text = file.read()
         myList = []
         normalizeTermFreq = text.split()  # Removes the white space between the words
@@ -82,15 +79,13 @@ def termfrequency(filename):
         term_frequency_graph = plot_tf(tf_grph)
         return myList
 
-
 def _stemming(filename):
     """
     This function reduces the word to its stem; stemming.
     Filename: Name of the file
     return: stemmed_words
     """
-
-    with open(filename.text, "r") as file:
+    with open(filename, "r") as file:
         text = file.read()
 
     ps = PorterStemmer()
@@ -98,7 +93,7 @@ def _stemming(filename):
     stemmed_words = []
     for w in words:
         stemmed_words.append(ps.stem(w)) # Adds words to the list
-    print(stemmed_words)
+
     return stemmed_words
 
 def lemmatization(filename):
@@ -107,7 +102,7 @@ def lemmatization(filename):
     Filename: Name of the file
     return: lemmatized_words
     """
-    with open(filename.text, "r") as file:
+    with open(filename, "r") as file:
         text = file.read()
 
     wn = nltk.WordNetLemmatizer()

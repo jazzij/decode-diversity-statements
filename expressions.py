@@ -10,31 +10,44 @@ Contributors: Tawanda Kumbula, @jazzij
 
 import re
 
-#Example use: findHashtag( os.path.join(textdir, "AISES.txt"))
-def findHashtag( filename):
-	''' Finds any hashtag (#text) from a text file. Returns list of hashtags found '''
 
+def findHashtag( filename):
+	"""
+	Finds any hashtag (#text) from a text file.
+	filename: Name of text files in the folder texts
+	return: hashtags
+	"""
 	with open(filename, "r") as file:
 		text = file.read()
 	
-	hashtags = re.findall(r"(#\w+)", text)
+	hashtags = re.findall(r"(#\w+)", text)  # Expression that finds the hashtags in the files
 	print("Found the following: ".format(hashtags))
 	return hashtags
 
 def findURL( filename):
-
+	"""
+	Finds the URLs from the text files.
+	filename: Name of text files.
+	return: URL
+	"""
 	with open(filename, "r") as file:
 		text = file.read()
 
-	URL = re.findall(r'(https?://[^\s]+)', text)
+	URL = re.findall(r'(https?://[^\s]+)', text) # Expression that finds the URL in text files
 	print("Found the following: ", format(URL))
 	return URL
+
 def findMention( filename):
+	"""
+	Finds the mentions in the text files; @.
+	filename: Nmae of text files
+	return: Mention
+	"""
 
 	with open(filename, "r") as file:
 		text = file.read()
 
-	Mention = re.findall(r"(@\w+)", text)
+	Mention = re.findall(r"(@\w+)", text) # Expression that fimds the mentions, @, in texts.
 	print("Found the Following: ", format(Mention))
 	return Mention
 
