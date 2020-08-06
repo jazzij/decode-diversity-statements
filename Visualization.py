@@ -68,9 +68,9 @@ with open("alltexts.txt", "r") as file:
                 new_str += ","
             newStr = j + " " + "|" + " " + new_str
             allWords.append(newStr)
-uniqueWords = set(allWords[:])  # This removes the duplicates of words after stemming and lemmatization
-for i in uniqueWords:
-    duplicates_free.append(i)
+    uniqueWords = set(allWords[:])  # This removes the duplicates of words after stemming and lemmatization
+    for i in uniqueWords:
+        duplicates_free.append(i)
 
     def Sorting(lst):
         lst2 = sorted(lst, key=len)
