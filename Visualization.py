@@ -40,45 +40,43 @@ with open("alltexts.txt", "r") as file:
     text = file.read()
     tokens = tokenizer.tokenize(text)
 
-#Finding the words that stemmed and lemmatized and return them as final stem and leaf
+# Finding the words that stemmed and lemmatized and return them as final stem and leaf
     for w in tokens:
         stemmed_words.append(ps.stem(w))
     for w in stemmed_words:
         lemmatized_words.append(wn.lemmatize(w))
 
-    for i in range(len(lemmatized_words)):
+
+    for i in range(len(lemmatized_words)):  # Checking if lemmatized_words contain keys in new_dict
 
         if lemmatized_words[i] not in new_dict.keys():
             if lemmatized_words[i] != tokens[i]:
                 new_dict[lemmatized_words[i]] = [tokens[i]]
-        else:
+        else:                                     # Finding all the words which have the same root/stem
             if lemmatized_words[i] != tokens[i]:
                 a = new_dict[lemmatized_words[i]]
                 if tokens[i] not in a:
                     a.append(tokens[i])
                     new_dict[lemmatized_words[i]] = a
 
-
+    allWords = []
     for j, k in new_dict.items():
-        new_str = ""
 
+        new_str = ""
+        newStr = ""
         for i in range(len(k)):
             new_str += k[i]
             if i != (len(k) - 1):
                 new_str += ","
             newStr = j + " " + "|" + " " + new_str
+        if newStr not in allWords:
             allWords.append(newStr)
-    uniqueWords = set(allWords[:])  # This removes the duplicates of words after stemming and lemmatization
-    for i in uniqueWords:
-        duplicates_free.append(i)
 
-    def Sorting(lst):
-        lst2 = sorted(lst, key=len)
-        return lst2
-
-
-    x = Sorting(duplicates_free)
-    x2 = x[::-1]  # this is reversing the  list
-
-    for i in x2:
+    allWords.sort()  # Sorts alphabetical order if the length of the leaf is the same
+    allWords.sort(key=len, reverse=True)  # Sorts the leaf by descending length
+    print("NUMBER OF STEMS:", len(allWords))
+    for i in allWords:
         print(i)
+
+
+
