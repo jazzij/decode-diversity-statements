@@ -32,18 +32,20 @@ def new_tokenized_texts():
   textdir = os.path.join( os.getcwd(), "texts") #assuming texts is a directory located in the same place as your python file
   prefix = "tokens_"  # This is added at the beginning of filename to avoid duplicating originals
   newtextdir = os.path.join(os.getcwd(), "tokenText")  # instead of ~/texts
-  filtered_words = []
+  # filtered_words = []
   for filename in os.listdir(textdir):
     newfilePath = os.path.join(textdir, filename)
     with open(newfilePath,"r") as file:     #Opens the original text files
       texts = file.read()
 
-      stop_words = set(stopwords.words('english'))  # Creating a List of stopwords
+      # stop_words = set(stopwords.words('english'))  # Creating a List of stopwords
+
       tokens = nltk.word_tokenize(texts)  # Breaks text paragraph into word
       tokens  = [word.lower() for word in tokens if word.isalpha()]  # Changes all the words into lower case
-      filtered_words = [w for w in tokens if not w in stop_words]  # Filter out a list of tokens from the text.
 
-      modified_words = modified_texts(filtered_words)  #The text goes through the lemmatization and stemming function
+      # filtered_words = [w for w in tokens if not w in stop_words]  # Filter out a list of tokens from the text.
+
+      modified_words = modified_texts(tokens)  #The tokens goes through the lemmatization and stemming function
       newfileName = prefix + filename
       newfilePath = os.path.join(newtextdir, newfileName)
       print("newfilePath",newfilePath)
