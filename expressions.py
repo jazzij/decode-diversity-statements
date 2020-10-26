@@ -22,8 +22,26 @@ def findHashtag( filename):
 	return hashtags
 
 def findURL( filename):
-	''' TODO: find URLs in the text '''
-	pass
+
+	with open(filename, "r") as file:
+		text = file.read()
+
+	URL = re.findall(r'(https?://[^\s]+)', text)
+	print("Found the following: ", format(URL))
+	return URL
+def findMention( filename):
+
+	with open(filename, "r") as file:
+		text = file.read()
+
+	Mention = re.findall(r"(@\w+)", text)
+	print("Found the Following: ", format(Mention))
+	return Mention
+
+
+
+
+
 
 
 
