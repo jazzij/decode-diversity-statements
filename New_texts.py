@@ -30,7 +30,7 @@ def new_tokenized_texts():
   """
 
   textdir = os.path.join(os.getcwd(), "texts")  # Assuming texts is a directory located in the same place as your python file
-  prefix = "tokens"  # This is added at the beginning of filename to avoid duplicating originals
+  prefix = "tokens_"  # This is added at the beginning of filename to avoid duplicating originals
   newtextdir = os.path.join(os.getcwd(), "tokenText")  # instead of ~/texts
 
   for filename in os.listdir(textdir):
