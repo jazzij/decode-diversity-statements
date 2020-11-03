@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-'''
+"""
 Regular expression to detect
 1) Hashtags
 2) URL's
 3) ... other
 
 Contributors: Tawanda Kumbula, @jazzij
-'''
+"""
 
 import re
 import os
@@ -14,7 +14,7 @@ import os
 curdir = os.getcwd()
 textdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements\texts")
 newtextdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements")
-newfilePath = os.path.join(newtextdir, "callout_file-name.txt.txt")
+newfilePath = os.path.join(newtextdir, "callout_file_name.txt")
 
 def findHashtag(text):
 	"""
@@ -56,11 +56,11 @@ def callout():
 			hashtags = findHashtag(text)
 			Url = findURL(text)
 
-			newfile = open("callout_file-name.txt", "a+")
+			newfile = open("callout_file_name.txt", "a+") # Writing the returned characters; @, # and URL in the file
 			newfile.write("\n".join(mentions))
-			# newfile.write("\n")
+			newfile.write("\n") # Separates the last mention and the first hashtag
 			newfile.write("\n".join(hashtags))
-			# newfile.write("\n")
+			newfile.write("\n")
 			newfile.write("\n".join(Url))
 			newfile.close()
 

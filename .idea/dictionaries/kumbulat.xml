@@ -2,7 +2,15 @@
   <dictionary name="kumbulat">
     <words>
       <w>callout</w>
+      <w>curdir</w>
+      <w>hashtag</w>
+      <w>hashtags</w>
+      <w>jazzij</w>
+      <w>kumbula</w>
       <w>newfile</w>
+      <w>newtextdir</w>
+      <w>tawanda</w>
+      <w>textdir</w>
     </words>
   </dictionary>
 </component>
