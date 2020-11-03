@@ -1,10 +1,15 @@
 import nltk
+import os
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk import FreqDist
 import matplotlib.pyplot as plt
+
+
+curdir = os.getcwd()
+textdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements\texts")
 
 def remove_puctuation(filename):
     """
