@@ -9,49 +9,63 @@ Contributors: Tawanda Kumbula, @jazzij
 '''
 
 import re
+import os
 
+curdir = os.getcwd()
+textdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements\texts")
+newtextdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements")
+newfilePath = os.path.join(newtextdir, "callout_file-name.txt.txt")
 
-def findHashtag( filename):
+def findHashtag(text):
 	"""
 	Finds any hashtag (#text) from a text file.
 	filename: Name of text files in the folder texts
 	return: hashtags
 	"""
-	with open(filename, "r") as file:
-		text = file.read()
-	
 	hashtags = re.findall(r"(#\w+)", text)  # Expression that finds the hashtags in the files
 	print("Found the following: ".format(hashtags))
 	return hashtags
 
-def findURL( filename):
+def findURL(text):
 	"""
 	Finds the URLs from the text files.
 	filename: Name of text files.
 	return: URL
 	"""
-	with open(filename, "r") as file:
-		text = file.read()
-
 	URL = re.findall(r'(https?://[^\s]+)', text) # Expression that finds the URL in text files
 	print("Found the following: ", format(URL))
 	return URL
 
-def findMention( filename):
+def findMention( text):
 	"""
 	Finds the mentions in the text files; @.
-	filename: Nmae of text files
+	filename: Name of text files
 	return: Mention
 	"""
-
-	with open(filename, "r") as file:
-		text = file.read()
-
 	Mention = re.findall(r"(@\w+)", text) # Expression that fimds the mentions, @, in texts.
 	print("Found the Following: ", format(Mention))
 	return Mention
 
+def callout():
+	for filename in os.listdir(textdir)[:]:
+		filepath = os.path.join(textdir, filename)
+		with open(filepath, "r") as file:
+			text = file.read()
 
+			mentions = findMention(text)
+			hashtags = findHashtag(text)
+			Url = findURL(text)
+
+			newfile = open("callout_file-name.txt", "a+")
+			newfile.write("\n".join(mentions))
+			# newfile.write("\n")
+			newfile.write("\n".join(hashtags))
+			# newfile.write("\n")
+			newfile.write("\n".join(Url))
+			newfile.close()
+
+if __name__ == "__main__":
+	callout()
 
 
 
