@@ -41,30 +41,12 @@ def new_tokenized_texts():
       tokens = nltk.word_tokenize(texts)  # Breaks text paragraph into word
       tokens = [word.lower() for word in tokens if word.isalpha()]  # Changes all the words into lower case
 
-      modified_words = modified_texts(tokens)  # The tokens goes through the lemmatization and stemming function
+      # modified_words = modified_texts(tokens)  # The tokens goes through the lemmatization and stemming function
       newfileName = prefix + filename
       newfilePath = os.path.join(newtextdir, newfileName)
       print("newfilePath",newfilePath)
       with open(newfilePath, 'w') as newfile:
-        newfile.write(", ".join(modified_words))  # This will write to file the list of filtered tokens as comma separated string
-
-def modified_texts(words):
-  """
-  This function makes the texts go through stemming and lemmatization.
-  Words: The text files
-  return: modified_words
-  """
-
-  modified_words = []
-  wn = nltk.WordNetLemmatizer()
-  ps = PorterStemmer()
-  for w in words:
-    if w[-3:] == "ing":   # Checks for the words that end with -ing and they going through stemming
-      modified_words.append(ps.stem(w))
-    else:
-      modified_words.append(wn.lemmatize(w))
-  return modified_words
-
+        newfile.write(", ".join(tokens))  # This will write to file the list of filtered tokens as comma separated string
 
 if __name__ == "__main__":
   all_texts()

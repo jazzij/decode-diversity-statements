@@ -3,14 +3,19 @@
     <words>
       <w>callout</w>
       <w>curdir</w>
+      <w>filepath</w>
       <w>hashtag</w>
       <w>hashtags</w>
       <w>jazzij</w>
       <w>kumbula</w>
+      <w>lemmatization</w>
       <w>newfile</w>
       <w>newtextdir</w>
+      <w>puctuation</w>
       <w>tawanda</w>
+      <w>termfrequency</w>
       <w>textdir</w>
+      <w>uniqu</w>
     </words>
   </dictionary>
 </component>

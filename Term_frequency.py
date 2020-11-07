@@ -9,116 +9,67 @@ import matplotlib.pyplot as plt
 
 
 curdir = os.getcwd()
-textdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements\texts")
+textdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements\tokenText")
+myList = []
 
-def remove_puctuation(filename):
-    """
-    This function removes the punctuations from the text.
-    Filename: Name of the file
-    return: new_text
-    """
-    with open(filename, "r") as file:
-        text = file.read()
-
-    tokenizer = nltk.RegexpTokenizer(r"\w+")  # Removes all punctuation marks in the text
-    new_text = tokenizer.tokenize(text)      # Returns a text as a list of words with punctuations removed.
-
-    return new_text
-
-def lower_case(filename):
-    """
-    This function is for changing the text to lower caps
-    Filename: Name of the file
-    return: words (in lower caps)
-    """
-    with open(filename.text, "r") as file:
-        text = file.read()
-
-    words = nltk.word_tokenize(text)  # Breaks text paragraph into words
-    words = [word.lower() for word in words if word.isalpha()]  # Changes all the words into lower case
-    return words
-
-def stop_words(filename):
+def stop_words(text):
     """
     This function is for removing the stopwords from the text file.
     Filename: Name of the file
     return: filtered_words
     """
-    with open(filename, "r") as file:
-        text = file.read()
-
-    stop_words = set(stopwords.words('english')) # Creating a List of stopwords
-
-    word_tokens = word_tokenize(text) # Split sentences in the text into words
-
-    filtered_words = [w for w in word_tokens if not w in stop_words] # Filter out a list of tokens from the text.
     filtered_words = []
-
-    for w in word_tokens:
+    stop_words = set(stopwords.words('english')) # Creating a List of stopwords
+    for w in text:
         if w not in stop_words:
             filtered_words.append(w)    # Add all words after stopwords have been removed
-    print ("Filtered_words:",filtered_words )
+    print("FilteredWords:", filtered_words)
     return filtered_words
 
-def termfrequency(filename):
+def termfrequency():
     """
     This function is supposed to calculate the term frequency of the text in file.
     Filename: Name of the file
     return: term frequency
     """
-    with open(filename, "r") as file:
-        text = file.read()
-        myList = []
-        normalizeTermFreq = text.split()  # Removes the white space between the words
-        allWords = (normalizeTermFreq)
+    for filename in os.listdir(textdir)[:]:
+        filepath = os.path.join(textdir, filename)
+        with open(filepath, "r") as file:
+            text = file.read()
+            words = stop_words(text)
+            modifiedTexts = modified_files(words)
 
-        uniqueWords = set(allWords)  # Searches and store each unrepeated word in text
+            uniquWords = set(modifiedTexts)
 
-        for i in uniqueWords:
-            count = 0
-            for j in allWords:
-               if i == j:      # Compares each with word with every word in the text
-                    count += 1
-            myList.append([i, count / len(allWords)]) # Add every word to the list and calculate the term frequency
-        tf_grph = dict(myList)
-        term_frequency_graph = plot_tf(tf_grph)
-        return myList
+            for i in uniquWords:
+                count = 0
+                for j in modifiedTexts:
 
-def _stemming(filename):
-    """
-    This function reduces the word to its stem; stemming.
-    Filename: Name of the file
-    return: stemmed_words
-    """
-    with open(filename, "r") as file:
-        text = file.read()
+                    if i == j:
+                        count += 1
+                myList.append([i, count / len(modifiedTexts)])
+            #print("myList:", myList)
+                return myList
 
-    ps = PorterStemmer()
-    words = word_tokenize(text)
-    stemmed_words = []
-    for w in words:
-        stemmed_words.append(ps.stem(w)) # Adds words to the list
 
-    return stemmed_words
 
-def lemmatization(filename):
-    """
-    This function is meant to reduce the word to its root synonym.
-    Filename: Name of the file
-    return: lemmatized_words
-    """
-    with open(filename, "r") as file:
-        text = file.read()
 
-    wn = nltk.WordNetLemmatizer()
-    words = word_tokenize(text)
-    lemmatized_words = []
-    for line in words:
-        lemmatized_words.append(wn.lemmatize(line))  # Adds words to the list
 
-    return lemmatized_words
 
-def modified_files(filename):
+        # uniqueWords = set(modifiedTexts)  # Searches and store each unrepeated word in text
+        #
+        # for i in uniqueWords:
+        #     count = 0
+        #     for j in modifiedTexts:
+        #        if i == j:      # Compares each with word with every word in the text
+        #             count += 1
+        #     myList.append([i, count / len(modifiedTexts)]) # Add every word to the list and calculate the term frequency
+        # tf_grph = dict(myList)
+        # term_frequency_graph = plot_tf(tf_grph)
+        # return myList
+
+
+def modified_files(text):
     """
     This function is supposed to stem the words that end with -ing and lemmatize the rest. It is also supposed to remove duplicates of words.
     filename: Name of text files
@@ -126,20 +77,16 @@ def modified_files(filename):
     """
     modified_words = []
     duplicates_free = []
-    with open(filename.txt, 'r') as file:
-        words = file.read()
-        new_words = word_tokenize(words)
-
     wn = nltk.WordNetLemmatizer()
     ps = PorterStemmer()
 
-    for w in new_words:
-        if w[-3:] == "ing": #Checks for the words that end with -ing and they going through stemming
+    for w in text:
+        if w[-3:] == "ing":  # Checks for the words that end with -ing and they going through stemming
             modified_words.append(ps.stem(w))
         else:
             modified_words.append(wn.lemmatize(w))
 
-        uniqueWords = set(modified_words[:]) #This removes the duplicates of words after stemming and lemmatization
+        uniqueWords = set(modified_words[:])  # This removes the duplicates of words after stemming and lemmatization
         for i in uniqueWords:
             duplicates_free.append(i)
     return duplicates_free
@@ -156,3 +103,6 @@ def plot_tf(filename):
 
         fd = nltk.FreqDist(tf_grph)
         fd.plot(40, cumulative=False)  #Plots forty terms with highest term frequency.
+
+if __name__ == "__main__":
+    termfrequency()

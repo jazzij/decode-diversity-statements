@@ -27,7 +27,7 @@ def all_corpus_ngrams():
             text = file.read()
             tokens = tokenizer.tokenize(text)
 
-            for s in tokens:   #This removes the single letter s
+            for s in tokens:   # This removes the single letter s
                 if len(s) == 1 and s == "s":
                     tokens.remove(s)
 
