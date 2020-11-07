@@ -41,7 +41,6 @@ def new_tokenized_texts():
       tokens = nltk.word_tokenize(texts)  # Breaks text paragraph into word
       tokens = [word.lower() for word in tokens if word.isalpha()]  # Changes all the words into lower case
 
-      # modified_words = modified_texts(tokens)  # The tokens goes through the lemmatization and stemming function
       newfileName = prefix + filename
       newfilePath = os.path.join(newtextdir, newfileName)
       print("newfilePath",newfilePath)
