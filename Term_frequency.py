@@ -12,6 +12,8 @@ filtered_words = []
 term_frequency = []
 curdir = os.getcwd()
 textdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements\texts")
+newtextdir = (r"C:\Users\kumbulat\PycharmProjects\decode-diversity-statements")
+newfilePath = os.path.join(newtextdir, "term_frequency.txt")
 tokenizer = nltk.RegexpTokenizer(r"\w+")  # Removes all punctuation marks in the text
 
 
@@ -50,6 +52,7 @@ def termfrequency():
             for i in new_words:
                 count += 1
                 term_frequency.append((i, count / len(new_words)))
+
             for i in term_frequency:
                 print(i)
     return term_frequency
@@ -94,6 +97,7 @@ def modified_files(filename):
     for i in uniqueWords:
         duplicates_free.append(i)
     return duplicates_free
+
 
 
 def plot_tf(filename):
