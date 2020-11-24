@@ -15,7 +15,7 @@ textdir = curdir + "/texts"
 if not os.path.isdir(textdir):
 	os.mkdir(textdir)
 
-# Get appropriate sheet from xcel file
+ # Get appropriate sheet from xcel file
 wb = load_workbook("Sci_Tech_BLM_List_wText.xlsx")
 statements = wb['Sheet6']
 

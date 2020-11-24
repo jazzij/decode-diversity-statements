@@ -58,7 +58,7 @@ def callout():
 
 			newfile = open("callout_file_name.txt", "a+") # Writing the returned characters; @, # and URL in the file
 			newfile.write("\n".join(mentions))
-			newfile.write("\n") # Separates the last mention and the first hashtag
+			newfile.write("\n")  # Separates the last mention and the first hashtag
 			newfile.write("\n".join(hashtags))
 			newfile.write("\n")
 			newfile.write("\n".join(Url))

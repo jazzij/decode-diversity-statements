@@ -6,7 +6,7 @@ Contributed by: Imani Sherman
 # Open the file in read mode
 filename = "testit.txt"
 text = open(filename, "r", encoding="utf-8")
-resultsfile=open("dawords.txt","w",encoding="utf-8")
+resultsfile = open("dawords.txt","w",encoding="utf-8")
 
 # Create an empty dictionary
 d = dict()

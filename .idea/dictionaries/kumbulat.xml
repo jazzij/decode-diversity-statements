@@ -2,11 +2,15 @@
   <dictionary name="kumbulat">
     <words>
       <w>alltexts</w>
+      <w>antiracist</w>
+      <w>blacklivesmatter</w>
       <w>callout</w>
       <w>curdir</w>
+      <w>filenames</w>
       <w>filepath</w>
       <w>hashtag</w>
       <w>hashtags</w>
+      <w>imani</w>
       <w>jazzij</w>
       <w>kumbula</w>
       <w>lemmatization</w>
@@ -16,6 +20,7 @@
       <w>newtextdir</w>
       <w>ngrams</w>
       <w>puctuation</w>
+      <w>resultsfile</w>
       <w>tawanda</w>
       <w>termfrequency</w>
       <w>textdir</w>
