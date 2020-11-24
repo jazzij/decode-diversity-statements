@@ -32,7 +32,7 @@ def stop_words(tokens):
     return filtered_words
 
 
-def termfrequency():
+def termfrequency(filename):
     """
     This function is supposed to calculate the term frequency of the text in file.
     Filename: Name of the file
@@ -52,27 +52,7 @@ def termfrequency():
             for i in new_words:
                 count += 1
                 term_frequency.append((i, count / len(new_words)))
-
-            for i in term_frequency:
-                print(i)
-    return term_frequency
-
-    # with open(filename, "r") as file:
-    #     text = file.read()
-    #     myList = []
-    #     normalizeTermFreq = text.split()  # Removes the white space between the words
-    #     allWords = (normalizeTermFreq)
-    #     uniqueWords = set(allWords)  # Searches and store each unrepeated word in text
-    #     for i in uniqueWords:
-    #         count = 0
-    #         for j in allWords:
-    #            if i == j:      # Compares each with word with every word in the text
-    #                 count += 1
-    #         myList.append([i, count / len(allWords)]) # Add every word to the list and calculate the term frequency
-    #     tf_grph = dict(myList)
-    #     term_frequency_graph = plot_tf(tf_grph)
-    #     return myList
-
+            return term_frequency
 
 def modified_files(filename):
     """
@@ -100,17 +80,31 @@ def modified_files(filename):
 
 
 
-def plot_tf(filename):
+def plot_tf():
     """
     This function is for plotting the term frequency of each file or allthewords list on a graph.
     """
-    with open(filename.txt, 'r') as file:
-        words = file.read()
-        new_words = word_tokenize(words)
-        tf_grph = dict(new_words)  # Changes the files into a dictionary
-        fd = nltk.FreqDist(tf_grph)
-        fd.plot(40, cumulative=False)  # Plots forty terms with highest term frequency.
+    for filename in os.listdir(textdir)[:]:
+        filepath = os.path.join(textdir, filename)
+        with open(filepath, "r") as file:
+            text = file.read()
+            new_words = word_tokenize(text)
+            new_words = termfrequency(new_words)
+
+            tf_grph = dict(new_words)  # Changes the files into a dictionary
+
+            fd = nltk.FreqDist(tf_grph)
+            fd.plot(40, cumulative=False)  # Plots forty terms with highest term frequency.
 
 
 if __name__ == "__main__":
-    termfrequency()
+    for filename in os.listdir(textdir)[:]:
+        filepath = os.path.join(textdir, filename)
+        with open(filepath, "r") as file:
+            text = file.read()
+            tokens = tokenizer.tokenize(text)  # Returns a text as a list of words with punctuations removed.
+            tokens = [token.lower() for token in tokens if token.isalpha()]  # Changes all the words into lower case
+            words = stop_words(tokens)
+            new_words = modified_files(words)
+            termfrequency(new_words)
+            plot_tf()
