@@ -76,7 +76,7 @@ with open("alltexts.txt", "r") as file:
     allWords.sort(key=len, reverse=True)  # Sorts the leaf by descending length
     print("NUMBER OF STEMS:", len(allWords))
     for i in allWords:
-        print(i)
+        print(i)  # Stems
 
 
 

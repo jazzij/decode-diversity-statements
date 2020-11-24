@@ -104,6 +104,7 @@ if __name__ == "__main__":
             text = file.read()
             tokens = tokenizer.tokenize(text)  # Returns a text as a list of words with punctuations removed.
             tokens = [token.lower() for token in tokens if token.isalpha()]  # Changes all the words into lower case
+
             words = stop_words(tokens)
             new_words = modified_files(words)
             termfrequency(new_words)

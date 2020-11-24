@@ -44,7 +44,6 @@ def significant_ngrams(trigrams):
      It also create a new text file with significant words trigrams.
 
     """
-
     tokenizer = nltk.RegexpTokenizer(r"\w+")
     words = open("uniquewordslist.txt", 'r')
     uniqueList = words.read()
@@ -62,7 +61,6 @@ def significant_ngrams(trigrams):
                 file = open("Significant wordlist_ngrams.txt", "a+")
                 file.write(str(significant)+ "\n")
                 file.close()
-
 
 if __name__ == "__main__":
    gram = all_corpus_ngrams()

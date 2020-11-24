@@ -1,6 +1,7 @@
 ﻿<component name="ProjectDictionaryState">
   <dictionary name="kumbulat">
     <words>
+      <w>alltexts</w>
       <w>callout</w>
       <w>curdir</w>
       <w>filepath</w>
@@ -10,13 +11,18 @@
       <w>kumbula</w>
       <w>lemmatization</w>
       <w>lemmatize</w>
+      <w>lemmatized</w>
       <w>newfile</w>
       <w>newtextdir</w>
+      <w>ngrams</w>
       <w>puctuation</w>
       <w>tawanda</w>
       <w>termfrequency</w>
       <w>textdir</w>
+      <w>txtfilename</w>
       <w>uniqu</w>
+      <w>uniquewordslist</w>
+      <w>xlxs</w>
     </words>
   </dictionary>
 </component>
