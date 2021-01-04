@@ -7,6 +7,33 @@
       <w>newfile</w>
       <w>newtextdir</w>
       <w>textdir</w>
+      <w>alltexts</w>
+      <w>antiracist</w>
+      <w>blacklivesmatter</w>
+      <w>callout</w>
+      <w>curdir</w>
+      <w>filenames</w>
+      <w>filepath</w>
+      <w>hashtag</w>
+      <w>hashtags</w>
+      <w>imani</w>
+      <w>jazzij</w>
+      <w>kumbula</w>
+      <w>lemmatization</w>
+      <w>lemmatize</w>
+      <w>lemmatized</w>
+      <w>newfile</w>
+      <w>newtextdir</w>
+      <w>ngrams</w>
+      <w>puctuation</w>
+      <w>resultsfile</w>
+      <w>tawanda</w>
+      <w>termfrequency</w>
+      <w>textdir</w>
+      <w>txtfilename</w>
+      <w>uniqu</w>
+      <w>uniquewordslist</w>
+      <w>xlxs</w>
     </words>
   </dictionary>
 </component>
