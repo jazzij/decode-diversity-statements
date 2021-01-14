@@ -8,7 +8,7 @@
  
 The second stage of the project focuses on going through all of the statements to get the derivatives of the root words. Manual inspection was done to remove words from the values of the dictionary because the ifflib.SequenceMatcher mathced some words that did not go together.
 
-E.g.
+**E.g.**
  "right": ["rights", "right", "bright", "wright"]
  "officer": ["officer", "officers", "office"]
  "equality": ["equality", "quality"]
