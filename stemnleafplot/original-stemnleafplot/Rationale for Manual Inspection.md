@@ -1,6 +1,6 @@
 **Date: Thursday, January 14, 2021**
 
-**Rational For Manual Inspection** 
+**Rational For Manual Inspection for slplot_uniquewords_allstatements.ipynb file** 
 
 This project aims to plot a stem and leaf visualizations of most important words and their derivatives in all of the statements. This is done in three stages, getting base form of the root words, getting its derivatives from all of the statements, and visualizing the data. Manual inspection was done in two stages of the process of stem and leaf plot. 
 
