@@ -100,7 +100,7 @@ def main():
     print("Root and Leaf Plot" + "\n")
     for root,leaves in root_and_leaves.items():
         print(root + '| ' + " ".join(leaves))
-    sys. stdout. close()
+    sys.stdout.close()
 
 main()
     
